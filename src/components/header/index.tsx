@@ -10,6 +10,9 @@ const Header: FunctionalComponent = () => {
                 <Link activeClassName={style.active} href="/">
                     صفحه اصلی
                 </Link>
+                <Link activeClassName={style.active} href="/map">
+                    نقشه
+                </Link>
             </nav>
         </header>
     );
