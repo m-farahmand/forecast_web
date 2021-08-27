@@ -1,10 +1,14 @@
 import { FunctionalComponent, h } from 'preact';
 import { useMemo, useState, useCallback } from 'preact/hooks';
-import { MapContainer, TileLayer, useMap, useMapEvent } from 'react-leaflet'
+import { MapContainer, TileLayer, useMap, useMapEvent, Rectangle } from 'react-leaflet'
+import { useEventHandlers } from '@react-leaflet/core';
+import { LeafletElement } from '@react-leaflet/core/types/element';
 
 import style from './style.css';
+import { RectangleProps } from 'react-leaflet/types/Rectangle';
+import { LatLngBoundsExpression, PathOptions } from 'leaflet';
 
-const POSITION_CLASSES = {
+const POSITION_CLASSES:any = {
     bottomleft: 'leaflet-bottom leaflet-left',
     bottomright: 'leaflet-bottom leaflet-right',
     topleft: 'leaflet-top leaflet-left',
@@ -13,12 +17,12 @@ const POSITION_CLASSES = {
 
 const BOUNDS_STYLE = { weight: 1 }
 
-const MinimapBounds: FunctionalComponent = ({ parentMap, zoom }) => {
+const MinimapBounds = ({ parentMap, zoom }: any) => {
     const minimap = useMap()
 
     // Clicking a point on the minimap sets the parent's map center
     const onClick = useCallback(
-        (e) => {
+        (e: any) => {
             parentMap.setView(e.latlng, parentMap.getZoom())
         },
         [parentMap],
@@ -35,12 +39,12 @@ const MinimapBounds: FunctionalComponent = ({ parentMap, zoom }) => {
 
     // Listen to events on the parent map
     const handlers = useMemo(() => ({ move: onChange, zoom: onChange }), [])
-    useEventHandlers({ instance: parentMap }, handlers)
+    useEventHandlers({ instance: parentMap } as LeafletElement<any, any>, handlers)
 
-    return <Rectangle bounds={bounds} pathOptions={BOUNDS_STYLE} />
+    return <Rectangle bounds={bounds as LatLngBoundsExpression} pathOptions={BOUNDS_STYLE as PathOptions} />
 }
 
-const MiniMapComponent: FunctionalComponent = ({ position, zoom }) => {
+const MiniMapComponent = ({ position, zoom }:any) => {
     const parentMap = useMap()
     const mapZoom = zoom || 0
 
