@@ -1,10 +1,11 @@
 import { FunctionalComponent, h } from 'preact';
-import { Route, Router } from 'preact-router';
+import { Route, Router, route } from 'preact-router';
 
 import Forecast from '../routes/forecast';
 import Home from '../routes/home';
 import NotFoundPage from '../routes/notfound';
 import Header from './header';
+import MapComponent from './map';
 
 const App: FunctionalComponent = () => {
     return (

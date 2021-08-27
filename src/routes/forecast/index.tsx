@@ -5,7 +5,7 @@ import style from './style.css';
 
 const Forecast: FunctionalComponent = () => {
     return (
-        <MapComponent position={[51.505, -0.09]} zoom={[13]} />
+        <MapComponent position={[35.689,51.389]} zoom={7} />
     );
 };
 
