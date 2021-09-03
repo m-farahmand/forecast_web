@@ -6,7 +6,5 @@ export const httpClient = (url, options: any = {}) => {
   if (!options ?.headers) {
     options.headers = new Headers({ Accept: "application/json" });
   }
-  const accessToken = localStorage.getItem("accessToken");
-  options.headers.set("Authorization", `Bearer ${accessToken}`);
   return fetch(`${basePath}/${url}`, options);
 };
