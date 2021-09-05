@@ -27,7 +27,7 @@ function getVelocity() {
     //colorScale: []       // define your own array of hex/rgb colors
   });
   //@TODO should be get light data depend on current location
-  let request = httpClient("stats/velocity", { });
+  let request = httpClient("winds", { });
 
   request
     .then(r => r.json())
