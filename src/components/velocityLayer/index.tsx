@@ -33,7 +33,7 @@ function getVelocity() {
     .then(r => r.json())
     .then(data => {
       if (velocityLayer) {
-        velocityLayer.setData(data);
+        velocityLayer.setData(data.data);
       }
     });
   return velocityLayer;
